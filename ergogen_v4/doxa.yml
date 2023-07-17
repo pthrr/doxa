@@ -1,8 +1,9 @@
 units:
   kx: 19.05
   ky: 19.05
-  px: kx + 2
-  py: ky + 2
+  p: 4
+  px: kx + p
+  py: ky + p
 points:
   zones:
     matrix:
@@ -31,12 +32,12 @@ points:
     thumbfan:
       anchor:
         ref: matrix_inner_mod
-        shift: [ky, 0]
+        shift: [kx, 0]
       columns:
         near.key:
           spread: 21.25
           splay: -28
-          origin: [-0.5ky, -0.5kx]
+          origin: [-0.5kx, -0.5ky]
       rows:
         thumb:
   rotate: -20
@@ -48,3 +49,45 @@ outlines:
     - what: rectangle
       where: true
       size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      bound: false
+      size: [kx-0.5,ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_num
+          shift: [0,0.5py]
+        - ref: matrix_index_num
+          shift: [0,0.5py]
+        - ref: mirror_matrix_index_num
+          shift: [0,0.5py]
+        - ref: mirror_matrix_middle_num
+          shift: [0,0.5py]
+        - ref: mirror_matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_middle_mod
+          shift: [0,-0.5py-p/2]
+        - ref: mirror_matrix_inner_mod
+          shift: [0.5px,-0.5py]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [0.5px,-0.5py+p/2-0.5]
+        - ref: thumbfan_near_thumb
+          shift: [0.5px,-0.5py+p/2-0.5]
+        - ref: matrix_inner_mod
+          shift: [0.5px,-0.5py]
+        - ref: matrix_middle_mod
+          shift: [0,-0.5py-p/2]
+        - ref: matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+      fillet: 2
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
