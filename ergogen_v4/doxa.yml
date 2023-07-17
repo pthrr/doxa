@@ -1,0 +1,50 @@
+units:
+  kx: 19.05
+  ky: 19.05
+  px: kx + 2
+  py: ky + 2
+points:
+  zones:
+    matrix:
+      key:
+        padding: 1ky
+        spread: 1kx
+      anchor:
+        rotate: 10
+      columns:
+        outer.key.stagger: 0
+        pinky.key.stagger: 2
+        ring.key.stagger: 2
+        middle.key.stagger: 2
+        index.key.stagger: -2
+        inner:
+          key.stagger: 0
+          rows:
+            num.skip: true
+            top.skip: true
+      rows:
+        mod:
+        bottom:
+        home:
+        top:
+        num:
+    thumbfan:
+      anchor:
+        ref: matrix_inner_mod
+        shift: [ky, 0]
+      columns:
+        near.key:
+          spread: 21.25
+          splay: -28
+          origin: [-0.5ky, -0.5kx]
+      rows:
+        thumb:
+  rotate: -20
+  mirror:
+    ref: thumbfan_near_thumb
+    distance: 1.5kx
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
