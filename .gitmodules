@@ -1,0 +1,3 @@
+[submodule "firmware/scripts/svd2cpp"]
+	path = firmware/scripts/svd2cpp
+	url = https://github.com/pthrr/svd2cpp.git

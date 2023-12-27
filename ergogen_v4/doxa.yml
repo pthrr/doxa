@@ -11,6 +11,7 @@ points:
         padding: 1ky
         spread: 1kx
       anchor:
+        shift: [100, -100]
         rotate: 10
       columns:
         outer.key.stagger: 0
@@ -63,9 +64,9 @@ outlines:
         - ref: matrix_middle_num
           shift: [0,0.5py]
         - ref: matrix_index_num
-          shift: [0,0.5py]
+          shift: [0.5px,0.5py]
         - ref: mirror_matrix_index_num
-          shift: [0,0.5py]
+          shift: [0.5px,0.5py]
         - ref: mirror_matrix_middle_num
           shift: [0,0.5py]
         - ref: mirror_matrix_outer_num
@@ -91,3 +92,51 @@ outlines:
     - name: board
     - operation: subtract
       name: keys
+  pcb_l:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_num
+          shift: [0,0.5py]
+        - ref: matrix_index_num
+          shift: [0.5px,0.5py]
+        - ref: matrix_inner_home
+          shift: [0.5px,0.5py]
+        - ref: thumbfan_near_thumb
+          shift: [0.5px,-0.5py+p/2-0.5]
+        - ref: matrix_inner_mod
+          shift: [0.5px,-0.5py]
+        - ref: matrix_middle_mod
+          shift: [0,-0.5py-p/2]
+        - ref: matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+      fillet: 0
+  combo_l:
+    - name: pcb_l
+    - operation: subtract
+      name: keys
+pcbs:
+  tutorial:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      cherry:
+        what: mx
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: false
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
