@@ -105,16 +105,45 @@ outlines:
         - ref: matrix_inner_home
           shift: [0.5px,0.5py]
         - ref: thumbfan_near_thumb
-          shift: [0.5px,-0.5py+p/2-0.5]
+          shift: [0.45px,0.45py]
+        - ref: thumbfan_near_thumb
+          shift: [0.45px,-0.45py]
         - ref: matrix_inner_mod
           shift: [0.5px,-0.5py]
         - ref: matrix_middle_mod
           shift: [0,-0.5py-p/2]
         - ref: matrix_outer_mod
           shift: [-0.5px,-0.5py]
-      fillet: 0
+      fillet: 2
+  pcb_r:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_middle_num
+          shift: [0,0.5py]
+        - ref: mirror_matrix_index_num
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_inner_home
+          shift: [0.5px,0.5py]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [0.45px,0.45py]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [0.45px,-0.45py]
+        - ref: mirror_matrix_inner_mod
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_middle_mod
+          shift: [0,-0.5py-p/2]
+        - ref: mirror_matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+      fillet: 2
   combo_l:
     - name: pcb_l
+    - operation: subtract
+      name: keys
+  combo_r:
+    - name: pcb_r
     - operation: subtract
       name: keys
 pcbs:
