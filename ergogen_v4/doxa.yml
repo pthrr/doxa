@@ -146,6 +146,24 @@ outlines:
     - name: pcb_r
     - operation: subtract
       name: keys
+  pcb_m:
+    - name: board
+    - operation: subtract
+      name: pcb_l
+    - operation: subtract
+      name: pcb_r
+  combo_m:
+    - name: pcb_m
+    - operation: subtract
+      name: keys
+  superimposed:
+    - name: board
+    - operation: stack
+      name: pcb_l
+    - operation: stack
+      name: pcb_r
+    - operation: stack
+      name: keys
 pcbs:
   tutorial:
     outlines:
